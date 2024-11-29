@@ -23,6 +23,7 @@
   "dependencies": {
     "@mantine/core": "7.14.3",
     "@mantine/hooks": "7.14.3",
+    "@mantinex/mantine-logo": "^1.0.1",
     "@next/bundle-analyzer": "^14.2.4",
     "@tabler/icons-react": "^3.6.0",
     "next": "15.0.1",
