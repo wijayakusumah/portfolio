@@ -1,12 +1,12 @@
-import { ContactInfo } from '@/components/contact';
 import { Footer } from '@/components/footer';
 import { Header } from '@/components/header';
+import { Project } from '@/components/project';
 
 export default function HomePage() {
   return (
     <>
       <Header />
-      <ContactInfo />
+      <Project />
       <Footer />
     </>
   );
