@@ -1,9 +1,14 @@
 import { useEffect, useState } from 'react';
-import { Box, Container, Group, MultiSelect, SimpleGrid } from '@mantine/core';
-import { fetchCompany } from '@/supabase/api/company'; // Ensure this imports correctly
-import { fetchProjects } from '@/supabase/api/projects'; // Ensure this imports correctly
+import { Button, Card, Container, Flex, MultiSelect, SimpleGrid } from '@mantine/core';
+import { fetchCompany } from '@/supabase/api/company';
+import { fetchProjects } from '@/supabase/api/projects';
+import { fetchCategory } from '@/supabase/api/category';
+import { fetchPosition } from '@/supabase/api/position';
+import { fetchStatus } from '@/supabase/api/status';
+import { fetchType } from '@/supabase/api/type';
 
-import { CardWithStats } from './list'; // Assuming this is your CardWithStats component
+import { CardWithStats } from './list';
+import { IconFilter } from '@tabler/icons-react';
 
 interface Project {
   id: string;
@@ -17,6 +22,7 @@ interface Project {
   goals: string;
   from: string;
   to: string;
+  category: string;
 }
 
 interface Company {
@@ -25,13 +31,39 @@ interface Company {
   short: string;
 }
 
+interface Category {
+  id: string;
+  title: string;
+}
+
+interface Position {
+  id: string;
+  title: string;
+}
+
+interface Status {
+  id: string;
+  title: string;
+}
+
+interface Type {
+  id: string;
+  title: string;
+}
+
 export function Project() {
   const [projects, setProjects] = useState<Project[]>([]);
-  const [companies, setCompanies] = useState<Company[]>([]); // State for companies
+  const [companies, setCompanies] = useState<Company[]>([]);
+  const [categories, setCategories] = useState<Category[]>([]);
+  const [positions, setPositions] = useState<Position[]>([]);
+  const [types, setTypes] = useState<Type[]>([]); // Added state for types
+  const [statuses, setStatuses] = useState<Status[]>([]); // Added state for statuses
   const [loading, setLoading] = useState(true);
-  const [statusFilter, setStatusFilter] = useState<string[]>([]); // Changed to array for multi-select
-  const [typeFilter, setTypeFilter] = useState<string[]>([]); // Changed to array for multi-select
-  const [companyFilter, setCompanyFilter] = useState<string[]>([]); // New state for company filter
+  const [statusFilter, setStatusFilter] = useState<string[]>([]);
+  const [typeFilter, setTypeFilter] = useState<string[]>([]);
+  const [categoryFilter, setCategoryFilter] = useState<string[]>([]);
+  const [companyFilter, setCompanyFilter] = useState<string[]>([]);
+  const [positionFilter, setPositionFilter] = useState<string[]>([]);
 
   useEffect(() => {
     async function getProjectsAndCompanies() {
@@ -43,6 +75,20 @@ export function Project() {
         // Fetch companies
         const companyData = await fetchCompany();
         setCompanies(companyData);
+
+        // Fetch categories, positions, statuses, and types
+        const categoryData = await fetchCategory();
+        setCategories(categoryData);
+
+        const positionData = await fetchPosition();
+        setPositions(positionData);
+
+        const statusData = await fetchStatus();
+        setStatuses(statusData);
+
+        const typeData = await fetchType();
+        setTypes(typeData);
+
       } catch (error) {
         console.error('Error fetching data:', error);
       } finally {
@@ -57,8 +103,20 @@ export function Project() {
     const statusMatch = statusFilter.length === 0 || statusFilter.includes(project.status);
     const typeMatch = typeFilter.length === 0 || typeFilter.includes(project.type);
     const companyMatch = companyFilter.length === 0 || companyFilter.includes(project.company);
-    return statusMatch && typeMatch && companyMatch;
+    const categoryMatch = categoryFilter.length === 0 || categoryFilter.includes(project.category);
+    const positionMatch = positionFilter.length === 0 || positionFilter.includes(project.position);
+
+    return statusMatch && typeMatch && companyMatch && categoryMatch && positionMatch;
   });
+
+  // Function to clear all filters
+  const clearFilters = () => {
+    setStatusFilter([]);
+    setTypeFilter([]);
+    setCategoryFilter([]);
+    setCompanyFilter([]);
+    setPositionFilter([]);
+  };
 
   if (loading) {
     return <p>Loading...</p>;
@@ -70,12 +128,11 @@ export function Project() {
 
   return (
     <Container size="lg" mt={100}>
-      {/* Filtering Controls Section */}
-      <Box mb="lg">
+      <Card mb="xl" padding="lg" radius="md" withBorder>
         <SimpleGrid
           cols={{ base: 1, sm: 2, lg: 3 }}
           spacing={{ base: 10, sm: 'xl' }}
-          verticalSpacing={{ base: 'md', sm: 'xl' }}
+          verticalSpacing={{ base: 'md', sm: 'sm' }}
         >
           {/* Company Multi-Select Filter */}
           <MultiSelect
@@ -96,10 +153,10 @@ export function Project() {
             placeholder="Select Status"
             value={statusFilter}
             onChange={setStatusFilter}
-            data={[
-              { value: 'Completed', label: 'Completed' },
-              { value: 'On Progress', label: 'On Progress' },
-            ]}
+            data={statuses.map((status) => ({
+              value: status.title,
+              label: status.title,
+            }))}
             clearable
           />
 
@@ -109,16 +166,53 @@ export function Project() {
             placeholder="Select Type"
             value={typeFilter}
             onChange={setTypeFilter}
-            data={[
-              { value: 'Team', label: 'Team' },
-              { value: 'Solo', label: 'Solo' },
-            ]}
+            data={types.map((type) => ({
+              value: type.title,
+              label: type.title,
+            }))}
             clearable
           />
-        </SimpleGrid>
-      </Box>
 
-      {/* Projects Display Section */}
+          {/* Category Multi-Select Filter */}
+          <MultiSelect
+            label="Category"
+            placeholder="Select Category"
+            value={categoryFilter}
+            onChange={setCategoryFilter}
+            data={categories.map((category) => ({
+              value: category.title,
+              label: category.title,
+            }))}
+            clearable
+          />
+
+          {/* Position Multi-Select Filter */}
+          <MultiSelect
+            label="Position"
+            placeholder="Select Position"
+            value={positionFilter}
+            onChange={setPositionFilter}
+            data={positions.map((position) => ({
+              value: position.title,
+              label: position.title,
+            }))}
+            clearable
+          />
+
+          <Flex align="flex-end">
+            <Button
+              onClick={clearFilters}
+              variant="light"
+              leftSection={<IconFilter size={14} />}
+              w="100%"
+            >
+              Clear All Filters
+            </Button>
+          </Flex>
+        </SimpleGrid>
+
+      </Card>
+
       <SimpleGrid
         cols={{ base: 1, sm: 2, lg: 3 }}
         spacing={{ base: 10, sm: 'xl' }}

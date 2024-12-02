@@ -1,4 +1,4 @@
-import { Badge, Box, Card, Grid, Group, Image, Progress, RingProgress, Text } from '@mantine/core';
+import { Badge, Box, Card, Grid, Group, Image, Progress, Text } from '@mantine/core';
 
 interface Project {
   id: string;
@@ -12,6 +12,7 @@ interface Project {
   from: string;
   to: string;
   type: string;
+  category: string;
 }
 
 interface CardWithStatsProps {
@@ -48,6 +49,8 @@ export function CardWithStats({ project }: CardWithStatsProps) {
     <Card
       withBorder
       padding="lg"
+      shadow="sm"
+      radius="md"
       style={{ backgroundColor: 'var(--mantine-color-body)', width: '100%' }}
     >
       <Card.Section>
