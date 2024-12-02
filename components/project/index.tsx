@@ -1,14 +1,13 @@
 import { useEffect, useState } from 'react';
+import { IconFilter } from '@tabler/icons-react';
 import { Button, Card, Container, Flex, MultiSelect, SimpleGrid } from '@mantine/core';
-import { fetchCompany } from '@/supabase/api/company';
-import { fetchProjects } from '@/supabase/api/projects';
 import { fetchCategory } from '@/supabase/api/category';
+import { fetchCompany } from '@/supabase/api/company';
 import { fetchPosition } from '@/supabase/api/position';
+import { fetchProjects } from '@/supabase/api/projects';
 import { fetchStatus } from '@/supabase/api/status';
 import { fetchType } from '@/supabase/api/type';
-
 import { CardWithStats } from './list';
-import { IconFilter } from '@tabler/icons-react';
 
 interface Project {
   id: string;
@@ -88,7 +87,6 @@ export function Project() {
 
         const typeData = await fetchType();
         setTypes(typeData);
-
       } catch (error) {
         console.error('Error fetching data:', error);
       } finally {
@@ -210,7 +208,6 @@ export function Project() {
             </Button>
           </Flex>
         </SimpleGrid>
-
       </Card>
 
       <SimpleGrid

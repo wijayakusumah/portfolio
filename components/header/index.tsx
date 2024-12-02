@@ -27,6 +27,7 @@ import {
 } from '@mantine/core';
 import { useDisclosure } from '@mantine/hooks';
 import { MantineLogo } from '@mantinex/mantine-logo';
+import { ColorTheme } from './colortheme';
 import classes from './index.module.css';
 
 const mockdata = [
@@ -144,9 +145,8 @@ export function Header() {
             </a>
           </Group>
 
-          <Group visibleFrom="sm">
-            <Button variant="default">Log in</Button>
-            <Button>Sign up</Button>
+          <Group>
+            <ColorTheme />
           </Group>
 
           <Burger opened={drawerOpened} onClick={toggleDrawer} hiddenFrom="sm" />
@@ -185,11 +185,6 @@ export function Header() {
           </a>
 
           <Divider my="sm" />
-
-          <Group justify="center" grow pb="xl" px="md">
-            <Button variant="default">Log in</Button>
-            <Button>Sign up</Button>
-          </Group>
         </ScrollArea>
       </Drawer>
     </Box>
