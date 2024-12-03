@@ -1,27 +1,86 @@
-import React, { useState, useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import { Container, Paper, Text } from '@mantine/core';
 import bg from './bg.svg';
+
+// Fungsi wait untuk delay asinkron
+const wait = (ms) => new Promise((resolve) => setTimeout(resolve, ms));
 
 export function Welcome() {
   const [typedText, setTypedText] = useState('');
   const [currentIndex, setCurrentIndex] = useState(0);
+  const [dialogIndex, setDialogIndex] = useState(0);
+  const commandPrefix = 'C:\\users\\client> ';
+
   const devTypeText = [
-    "<span>About Dev Quest<br/><br/>Do you want to go on an epic quest to uncover the magic of coding? Seize the chance to learn about web development and get a scholarship or an internship.</span><br/><br/><br/><span>Are you a developer?<br/> Y / N</span><br/>"
+    {
+      command: 'Please tell me about yourself?',
+      response:
+        'My name is Abdul Kodir Wijaya K, born in Purwakarta. I have 3+ years of experience in system development.',
+    },
+    {
+      command: 'Please list your projects?',
+      response: 'I am passionate about tech and human. Many projects I built to automate systems.',
+    },
+    {
+      command: 'Please show your contact?',
+      response: 'You can contact Wijaya via phone, email, and social media.',
+    },
   ];
 
-  useEffect(() => {
-    // Start typing effect after 2 seconds for the rest of the text
-    const typingInterval = setInterval(() => {
-      if (currentIndex < devTypeText[0].length) {
-        setTypedText(devTypeText[0].slice(0, currentIndex + 1));
-        setCurrentIndex(currentIndex + 1);
-      } else {
-        clearInterval(typingInterval);
-      }
-    }, 100); // Typing speed
+  // Fungsi pengetikan dengan async/await
+  const typeText = async () => {
+    for (let i = 0; i < devTypeText.length; i++) {
+      // Mengetikkan command dengan prefix
+      await typeCommand(devTypeText[i].command);
 
-    return () => clearInterval(typingInterval); // Cleanup on component unmount
-  }, [currentIndex]);
+      // Mengetikkan enter setelah command
+      await typeEnter();
+
+      // Jeda sebelum mengetikkan response
+      await wait(1000); // Jeda 1 detik
+
+      // Mengetikkan response
+      await typeResponse(devTypeText[i].response);
+
+      // Mengetikkan enter setelah response
+      await typeEnter();
+
+      // Mengetikkan enter setelah response
+      await typeEnter();
+
+      // Jeda setelah response selesai
+      await wait(2000); // Jeda 2 detik sebelum pindah ke dialog berikutnya
+    }
+  };
+
+  // Mengetikkan command dengan prefix
+  const typeCommand = async (command) => {
+    setTypedText((prev) => prev + `<strong>${commandPrefix}</strong>`); // Tambahkan prefix
+    await wait(500); // Delay sedikit sebelum mengetik command
+
+    for (let i = 0; i < command.length; i++) {
+      setTypedText((prev) => prev + command[i]);
+      await wait(100); // Kecepatan pengetikan 100ms per karakter
+    }
+  };
+
+  // Mengetikkan enter (newline)
+  const typeEnter = async () => {
+    setTypedText((prev) => prev + '\n');
+    await wait(500); // Jeda sedikit sebelum melanjutkan
+  };
+
+  // Mengetikkan response
+  const typeResponse = async (response) => {
+    for (let i = 0; i < response.length; i++) {
+      setTypedText((prev) => prev + response[i]);
+      await wait(100); // Kecepatan pengetikan 100ms per karakter
+    }
+  };
+
+  useEffect(() => {
+    typeText(); // Jalankan pengetikan otomatis saat komponen pertama kali dimuat
+  }, []);
 
   return (
     <Container
@@ -39,8 +98,9 @@ export function Welcome() {
             display: 'flex',
             backgroundColor: 'light-dark(var(--mantine-color-white), var(--mantine-color-dark-8))',
             borderRadius: 'var(--mantine-radius-lg)',
-            padding: '4px',
-            border: '1px solid light-dark(var(--mantine-color-gray-2), var(--mantine-color-dark-8))',
+            padding: '8px',
+            border:
+              '1px solid light-dark(var(--mantine-color-gray-2), var(--mantine-color-dark-8))',
             flexDirection: 'column',
           }}
         >
@@ -69,7 +129,6 @@ export function Welcome() {
               Transforming Ideas into Tools for Positive Change
             </Text>
 
-            {/* Always visible static text */}
             <Text fz="md" c="#fff" style={{ fontFamily: 'Courier New, monospace' }}>
               Microsoft Windows [Version 10.0.22631.4460]
             </Text>
@@ -77,11 +136,12 @@ export function Welcome() {
               (c) Microsoft Corporation. All rights reserved.
             </Text>
 
-            {/* Render typedText as raw HTML using dangerouslySetInnerHTML */}
+            {/* Render typedText */}
             <div
               style={{
                 color: '#fff',
-                fontFamily: 'Courier New, monospace', // Change this to your desired font
+                fontFamily: 'Courier New, monospace',
+                whiteSpace: 'pre-wrap',
               }}
               dangerouslySetInnerHTML={{ __html: typedText }}
             />
@@ -102,6 +162,6 @@ export function Welcome() {
           </div>
         </div>
       </Paper>
-    </Container >
+    </Container>
   );
 }
