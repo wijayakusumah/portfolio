@@ -1,14 +1,12 @@
 import { Footer } from '@/components/footer';
 import { Header } from '@/components/header';
-import { ColorSchemeToggle } from '../components/ColorSchemeToggle/ColorSchemeToggle';
-import { Welcome } from '../components/Welcome/Welcome';
+import { Welcome } from '../components/welcome';
 
 export default function HomePage() {
   return (
     <>
       <Header />
       <Welcome />
-      <ColorSchemeToggle />
       <Footer />
     </>
   );

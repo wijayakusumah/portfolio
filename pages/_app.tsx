@@ -1,4 +1,5 @@
 import '@mantine/core/styles.css';
+import '@mantine/code-highlight/styles.css';
 
 import type { AppProps } from 'next/app';
 import Head from 'next/head';
