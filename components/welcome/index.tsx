@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
-import { Container, Paper, Text } from '@mantine/core';
-import bg from './bg.svg';
+import { Container, Grid, Paper, Text, Image, Group } from '@mantine/core';
+import bg from '../../public/pages/bg.svg';
+import supabaseIcon from '../../public/tech/supabase.svg'
 
 // Fungsi wait untuk delay asinkron
 const wait = (ms) => new Promise((resolve) => setTimeout(resolve, ms));
@@ -45,18 +46,15 @@ export function Welcome() {
       // Mengetikkan enter setelah response
       await typeEnter();
 
-      // Mengetikkan enter setelah response
-      await typeEnter();
-
       // Jeda setelah response selesai
-      await wait(2000); // Jeda 2 detik sebelum pindah ke dialog berikutnya
+      await wait(1000); // Jeda 2 detik sebelum pindah ke dialog berikutnya
     }
   };
 
   // Mengetikkan command dengan prefix
   const typeCommand = async (command) => {
-    setTypedText((prev) => prev + `<strong>${commandPrefix}</strong>`); // Tambahkan prefix
-    await wait(500); // Delay sedikit sebelum mengetik command
+    setTypedText((prev) => prev + '\n' + `<strong>${commandPrefix}</strong>`); // Tambahkan prefix
+    await wait(2000); // Delay sedikit sebelum mengetik command
 
     for (let i = 0; i < command.length; i++) {
       setTypedText((prev) => prev + command[i]);
@@ -151,14 +149,69 @@ export function Welcome() {
           <div
             style={{
               flex: 1,
-              padding: 'var(--mantine-spacing-xl)',
-              paddingLeft: 'calc(var(--mantine-spacing-xl) * 2)',
+              padding: 'var(--mantine-spacing-lg)',
               borderLeft: 0,
             }}
           >
             <Text fz="lg" fw={700} style={{ marginBottom: 'var(--mantine-spacing-xl)' }}>
-              Get in touch
+              This web build by "The power of open source".
             </Text>
+            <Grid>
+              <Grid.Col span={{ base: 12, md: 12, lg: 6 }}>
+                <Text fz="md" fw={600} style={{ marginBottom: 'var(--mantine-spacing-md)' }}>
+                  Backend and Frontend Tech
+                </Text>
+                <Group grow>
+                  <Image
+                    m={5}
+                    radius="md"
+                    w="auto"
+                    fit="contain"
+                    h={20}
+                    src="/tech/supabase-logo.svg"
+                  />
+                  <Image
+                    m={5}
+                    radius="md"
+                    w="auto"
+                    fit="contain"
+                    h={20}
+                    src="/tech/nextjs-logo.svg"
+                  />
+                  <Image
+                    m={5}
+                    radius="md"
+                    w="auto"
+                    fit="contain"
+                    h={20}
+                    src="/tech/mantine-logo.svg"
+                  />
+                </Group>
+              </Grid.Col>
+              <Grid.Col span={{ base: 12, md: 12, lg: 6 }}>
+                <Text fz="md" fw={600} style={{ marginBottom: 'var(--mantine-spacing-md)' }}>
+                  Code management and assisstant
+                </Text>
+                <Group grow>
+                  <Image
+                    m={5}
+                    radius="md"
+                    w="auto"
+                    fit="contain"
+                    h={20}
+                    src="/tech/github-logo.svg"
+                  />
+                  <Image
+                    m={5}
+                    radius="md"
+                    w="auto"
+                    fit="contain"
+                    h={20}
+                    src="/tech/openai-logo.svg"
+                  />
+                </Group>
+              </Grid.Col>
+            </Grid>
           </div>
         </div>
       </Paper>
