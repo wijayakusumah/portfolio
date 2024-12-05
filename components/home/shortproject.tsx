@@ -1,8 +1,8 @@
 import { useEffect, useState } from 'react';
-import { Button, Container, SimpleGrid } from '@mantine/core';
+import { Button, Container, SimpleGrid, Text } from '@mantine/core';
 import { fetchProjects } from '@/supabase/api/projects';
 import { CardWithStats } from '../project/list';
-import { IconAffiliateFilled, IconCategoryPlus, IconDeviceIpadCheck, IconDeviceIpadHorizontalCheck, IconShieldCheckFilled } from '@tabler/icons-react';
+import { IconCategoryPlus } from '@tabler/icons-react';
 
 interface Project {
     id: string;
@@ -50,7 +50,20 @@ export function ShortProject() {
     }
 
     return (
-        <Container size="lg" mt={100}>
+        <Container size="lg" mt={60}>
+            <Text
+                fz="xl"
+                fw={700}
+                style={{
+                    marginBottom: 'calc(var(--mantine-spacing-md))',
+                    fontFamily: 'Greycliff CF, var(--mantine-font-family)',
+                }}
+            >
+                PROJECT LIST
+            </Text>
+            <Text fz="md" style={{ marginBottom: 'var(--mantine-spacing-xl)' }}>
+                Below are some of the key projects I have worked on, each designed to create meaningful and positive change. These initiatives reflect my commitment to innovation, collaboration, and sustainability. Every project serves as a testament to my ability to transform ideas into impactful solutions.
+            </Text>
 
             <SimpleGrid
                 cols={{ base: 1, sm: 2, lg: 3 }}

@@ -14,6 +14,7 @@ import {
   Button,
   Center,
   Collapse,
+  Container,
   Divider,
   Drawer,
   Group,
@@ -87,7 +88,7 @@ export function Header() {
   ));
 
   return (
-    <Box>
+    <Container w='lg'>
       <header className={classes.header}>
         <Group justify="space-between" h="100%">
           <MantineLogo size={30} />
@@ -187,6 +188,6 @@ export function Header() {
           <Divider my="sm" />
         </ScrollArea>
       </Drawer>
-    </Box>
+    </Container>
   );
 }

@@ -1,83 +1,63 @@
 import React, { useEffect, useState } from 'react';
-import { Container, Grid, Paper, Text, Image, Group } from '@mantine/core';
+import { Container, Grid, Paper, Text, Image, Group, ActionIcon, Flex } from '@mantine/core';
 import bg from '../../public/pages/bg.svg';
-import supabaseIcon from '../../public/tech/supabase.svg'
+import { IconBrandGithub, IconBrandMantine, IconBrandNextjs, IconBrandOpenai, IconBrandSupabase } from '@tabler/icons-react';
 
-// Fungsi wait untuk delay asinkron
 const wait = (ms) => new Promise((resolve) => setTimeout(resolve, ms));
 
 export function Welcome() {
   const [typedText, setTypedText] = useState('');
-  const [currentIndex, setCurrentIndex] = useState(0);
-  const [dialogIndex, setDialogIndex] = useState(0);
   const commandPrefix = 'C:\\users\\client> ';
 
   const devTypeText = [
     {
-      command: 'Please tell me about yourself?',
-      response:
-        'My name is Abdul Kodir Wijaya K, born in Purwakarta. I have 3+ years of experience in system development.',
+      command: 'Tell me about your journey?',
+      response: 'I`m Abdul Kodir Wijaya K, a passionate developer from Purwakarta. With over 3 years of experience, I thrive on creating innovative, impactful solutions.',
     },
     {
-      command: 'Please list your projects?',
-      response: 'I am passionate about tech and human. Many projects I built to automate systems.',
+      command: 'What kind of projects do you work on?',
+      response: 'I specialize in building systems that automate and optimize processes, always aiming to improve efficiency and user experience.',
     },
     {
-      command: 'Please show your contact?',
-      response: 'You can contact Wijaya via phone, email, and social media.',
+      command: 'How can we get in touch?',
+      response: 'Feel free to connect with me through phone, email, or social media. I’m open to collaborations and exciting opportunities.',
     },
   ];
 
-  // Fungsi pengetikan dengan async/await
   const typeText = async () => {
     for (let i = 0; i < devTypeText.length; i++) {
-      // Mengetikkan command dengan prefix
       await typeCommand(devTypeText[i].command);
-
-      // Mengetikkan enter setelah command
       await typeEnter();
-
-      // Jeda sebelum mengetikkan response
-      await wait(1000); // Jeda 1 detik
-
-      // Mengetikkan response
+      await wait(1000);
       await typeResponse(devTypeText[i].response);
-
-      // Mengetikkan enter setelah response
       await typeEnter();
-
-      // Jeda setelah response selesai
-      await wait(1000); // Jeda 2 detik sebelum pindah ke dialog berikutnya
+      await wait(1000);
     }
   };
 
-  // Mengetikkan command dengan prefix
   const typeCommand = async (command) => {
-    setTypedText((prev) => prev + '\n' + `<strong>${commandPrefix}</strong>`); // Tambahkan prefix
-    await wait(2000); // Delay sedikit sebelum mengetik command
-
+    setTypedText((prev) => prev + '\n' + `<strong>${commandPrefix}</strong>`);
+    await wait(2000);
     for (let i = 0; i < command.length; i++) {
       setTypedText((prev) => prev + command[i]);
-      await wait(100); // Kecepatan pengetikan 100ms per karakter
+      await wait(100);
     }
   };
 
-  // Mengetikkan enter (newline)
   const typeEnter = async () => {
     setTypedText((prev) => prev + '\n');
-    await wait(500); // Jeda sedikit sebelum melanjutkan
+    await wait(500);
   };
 
-  // Mengetikkan response
   const typeResponse = async (response) => {
     for (let i = 0; i < response.length; i++) {
       setTypedText((prev) => prev + response[i]);
-      await wait(100); // Kecepatan pengetikan 100ms per karakter
+      await wait(100);
     }
   };
 
   useEffect(() => {
-    typeText(); // Jalankan pengetikan otomatis saat komponen pertama kali dimuat
+    typeText();
   }, []);
 
   return (
@@ -124,14 +104,14 @@ export function Welcome() {
                 fontFamily: 'Greycliff CF, var(--mantine-font-family)',
               }}
             >
-              Transforming Ideas into Tools for Positive Change
+              TRANSFORMING IDEAS INTO TOOLS FOR POSITIVE CHANGE
             </Text>
 
             <Text fz="md" c="#fff" style={{ fontFamily: 'Courier New, monospace' }}>
-              Microsoft Windows [Version 10.0.22631.4460]
+              Wijaya Portfolio [Version 1.0.0.0]
             </Text>
             <Text mb="xl" fz="md" c="#fff" style={{ fontFamily: 'Courier New, monospace' }}>
-              (c) Microsoft Corporation. All rights reserved.
+              (c) Wijaya. All rights reserved.
             </Text>
 
             {/* Render typedText */}
@@ -153,63 +133,162 @@ export function Welcome() {
               borderLeft: 0,
             }}
           >
-            <Text fz="lg" fw={700} style={{ marginBottom: 'var(--mantine-spacing-xl)' }}>
-              This web build by "The power of open source".
+            <Text fz="md" style={{ marginBottom: 'var(--mantine-spacing-md)' }}>
+              Dear All,
             </Text>
+            <Text fz="md" style={{ marginBottom: 'var(--mantine-spacing-xl)' }}>
+              Welcome to my portfolio, where creativity meets innovation. Each project is a testament to my passion for technology and my commitment to building solutions that make a difference. Using the best open-source tools available, I craft experiences that are both scalable and user-friendly.
+            </Text>
+            <Text fz="lg" fw={700} style={{ marginBottom: 'var(--mantine-spacing-xl)' }}>
+              This website is built with the power of{' '}
+              <span style={{
+                background: 'linear-gradient(to right, #ff4c4c, #2575fc)', // Red to Blue gradient
+                WebkitBackgroundClip: 'text',
+                color: 'transparent'
+              }}>
+                open-source
+              </span>{' '}
+              technologies.
+            </Text>
+
             <Grid>
               <Grid.Col span={{ base: 12, md: 12, lg: 6 }}>
                 <Text fz="md" fw={600} style={{ marginBottom: 'var(--mantine-spacing-md)' }}>
                   Backend and Frontend Tech
                 </Text>
-                <Group grow>
-                  <Image
-                    m={5}
-                    radius="md"
-                    w="auto"
-                    fit="contain"
-                    h={20}
-                    src="/tech/supabase-logo.svg"
-                  />
-                  <Image
-                    m={5}
-                    radius="md"
-                    w="auto"
-                    fit="contain"
-                    h={20}
-                    src="/tech/nextjs-logo.svg"
-                  />
-                  <Image
-                    m={5}
-                    radius="md"
-                    w="auto"
-                    fit="contain"
-                    h={20}
-                    src="/tech/mantine-logo.svg"
-                  />
-                </Group>
+                <Flex
+                  direction={{ base: 'column', sm: 'row' }}
+                  gap={{ base: 'sm', sm: 'lg' }}
+                  justify={{ sm: 'center' }}
+                  p={10}
+                  mih={50}
+                  bg="rgba(0, 0, 0, .3)"
+                  wrap="wrap"
+                  style={{
+                    border: '2px solid rgba(0, 0, 0, 0)',
+                    borderRadius: '8px',
+                  }}
+                >
+                  {/* Supabase */}
+                  <Group align="center" gap="xs">
+                    <ActionIcon variant="filled" size="lg">
+                      <IconBrandSupabase style={{ width: '70%', height: '70%' }} stroke={1.5} />
+                    </ActionIcon>
+                    <Text
+                      style={{
+                        fontSize: '14px',
+                        fontWeight: 600,
+                        color: '#fff',
+                        fontFamily: 'Arial, sans-serif',
+                      }}
+                    >
+                      Supabase
+                    </Text>
+                  </Group>
+
+                  {/* Next JS */}
+                  <Group align="center" gap="xs">
+                    <ActionIcon variant="filled" size="lg">
+                      <IconBrandNextjs style={{ width: '70%', height: '70%' }} stroke={1.5} />
+                    </ActionIcon>
+                    <Text
+                      style={{
+                        fontSize: '14px',
+                        fontWeight: 600,
+                        color: '#fff',
+                        fontFamily: 'Arial, sans-serif',
+                      }}
+                    >
+                      Next JS
+                    </Text>
+                  </Group>
+
+                  {/* Mantine UI */}
+                  <Group align="center" gap="xs">
+                    <ActionIcon variant="filled" size="lg">
+                      <IconBrandMantine style={{ width: '70%', height: '70%' }} stroke={1.5} />
+                    </ActionIcon>
+                    <Text
+                      style={{
+                        fontSize: '14px',
+                        fontWeight: 600,
+                        color: '#fff',
+                        fontFamily: 'Arial, sans-serif',
+                      }}
+                    >
+                      Mantine UI
+                    </Text>
+                  </Group>
+                </Flex>
+
+
               </Grid.Col>
               <Grid.Col span={{ base: 12, md: 12, lg: 6 }}>
                 <Text fz="md" fw={600} style={{ marginBottom: 'var(--mantine-spacing-md)' }}>
                   Code management and assisstant
                 </Text>
-                <Group grow>
-                  <Image
-                    m={5}
-                    radius="md"
-                    w="auto"
-                    fit="contain"
-                    h={20}
-                    src="/tech/github-logo.svg"
-                  />
-                  <Image
-                    m={5}
-                    radius="md"
-                    w="auto"
-                    fit="contain"
-                    h={20}
-                    src="/tech/openai-logo.svg"
-                  />
-                </Group>
+                <Flex
+                  direction={{ base: 'column', sm: 'row' }}
+                  gap={{ base: 'sm', sm: 'lg' }}
+                  justify={{ sm: 'center' }}
+                  p={10}
+                  mih={50}
+                  bg="rgba(0, 0, 0, .3)"
+                  wrap="wrap"
+                  style={{
+                    border: '2px solid rgba(0, 0, 0, 0)',
+                    borderRadius: '8px',
+                  }}
+                >
+                  {/* Supabase */}
+                  <Group align="center" gap="xs">
+                    <ActionIcon variant="filled" size="lg">
+                      <IconBrandGithub style={{ width: '70%', height: '70%' }} stroke={1.5} />
+                    </ActionIcon>
+                    <Text
+                      style={{
+                        fontSize: '14px',
+                        fontWeight: 600,
+                        color: '#fff',
+                        fontFamily: 'Arial, sans-serif',
+                      }}
+                    >
+                      Github
+                    </Text>
+                  </Group>
+
+                  {/* Next JS */}
+                  <Group align="center" gap="xs">
+                    <ActionIcon variant="filled" size="lg">
+                      <IconBrandOpenai style={{ width: '70%', height: '70%' }} stroke={1.5} />
+                    </ActionIcon>
+                    <Text
+                      style={{
+                        fontSize: '14px',
+                        fontWeight: 600,
+                        color: '#fff',
+                        fontFamily: 'Arial, sans-serif',
+                      }}
+                    >
+                      Open AI
+                    </Text>
+                  </Group>
+                  <Group align="center" gap="xs">
+                    <ActionIcon variant="filled" size="lg">
+                      <IconBrandOpenai style={{ width: '70%', height: '70%' }} stroke={1.5} />
+                    </ActionIcon>
+                    <Text
+                      style={{
+                        fontSize: '14px',
+                        fontWeight: 600,
+                        color: '#fff',
+                        fontFamily: 'Arial, sans-serif',
+                      }}
+                    >
+                      Open AI
+                    </Text>
+                  </Group>
+                </Flex>
               </Grid.Col>
             </Grid>
           </div>
