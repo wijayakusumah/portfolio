@@ -1,7 +1,14 @@
 import React, { useEffect, useState } from 'react';
-import { Container, Grid, Paper, Text, Image, Group, ActionIcon, Flex } from '@mantine/core';
+import {
+  IconBrandGithub,
+  IconBrandMantine,
+  IconBrandNextjs,
+  IconBrandOpenai,
+  IconBrandSupabase,
+} from '@tabler/icons-react';
+import { ActionIcon, Container, Flex, Grid, Group, Image, Paper, Text } from '@mantine/core';
 import bg from '../../public/pages/bg.svg';
-import { IconBrandGithub, IconBrandMantine, IconBrandNextjs, IconBrandOpenai, IconBrandSupabase } from '@tabler/icons-react';
+import { HomeSkill } from './skil';
 
 const wait = (ms) => new Promise((resolve) => setTimeout(resolve, ms));
 
@@ -12,15 +19,18 @@ export function Welcome() {
   const devTypeText = [
     {
       command: 'Tell me about your journey?',
-      response: 'I`m Abdul Kodir Wijaya K, a passionate developer from Purwakarta. With over 3 years of experience, I thrive on creating innovative, impactful solutions.',
+      response:
+        'I`m Abdul Kodir Wijaya K, a passionate developer from Purwakarta. With over 3 years of experience, I thrive on creating innovative, impactful solutions.',
     },
     {
       command: 'What kind of projects do you work on?',
-      response: 'I specialize in building systems that automate and optimize processes, always aiming to improve efficiency and user experience.',
+      response:
+        'I specialize in building systems that automate and optimize processes, always aiming to improve efficiency and user experience.',
     },
     {
       command: 'How can we get in touch?',
-      response: 'Feel free to connect with me through phone, email, or social media. I’m open to collaborations and exciting opportunities.',
+      response:
+        'Feel free to connect with me through phone, email, or social media. I’m open to collaborations and exciting opportunities.',
     },
   ];
 
@@ -137,160 +147,25 @@ export function Welcome() {
               Dear All,
             </Text>
             <Text fz="md" style={{ marginBottom: 'var(--mantine-spacing-xl)' }}>
-              Welcome to my portfolio, where creativity meets innovation. Each project is a testament to my passion for technology and my commitment to building solutions that make a difference. Using the best open-source tools available, I craft experiences that are both scalable and user-friendly.
+              Welcome to my portfolio, where creativity meets innovation. Each project is a
+              testament to my passion for technology and my commitment to building solutions that
+              make a difference. Using the best open-source tools available, I craft experiences
+              that are both scalable and user-friendly.
             </Text>
             <Text fz="lg" fw={700} style={{ marginBottom: 'var(--mantine-spacing-xl)' }}>
               This website is built with the power of{' '}
-              <span style={{
-                background: 'linear-gradient(to right, #ff4c4c, #2575fc)', // Red to Blue gradient
-                WebkitBackgroundClip: 'text',
-                color: 'transparent'
-              }}>
+              <span
+                style={{
+                  background: 'linear-gradient(to right, #ff4c4c, #2575fc)', // Red to Blue gradient
+                  WebkitBackgroundClip: 'text',
+                  color: 'transparent',
+                }}
+              >
                 open-source
               </span>{' '}
               technologies.
             </Text>
-
-            <Grid>
-              <Grid.Col span={{ base: 12, md: 12, lg: 6 }}>
-                <Text fz="md" fw={600} style={{ marginBottom: 'var(--mantine-spacing-md)' }}>
-                  Backend and Frontend Tech
-                </Text>
-                <Flex
-                  direction={{ base: 'column', sm: 'row' }}
-                  gap={{ base: 'sm', sm: 'lg' }}
-                  justify={{ sm: 'center' }}
-                  p={10}
-                  mih={50}
-                  bg="rgba(0, 0, 0, .3)"
-                  wrap="wrap"
-                  style={{
-                    border: '2px solid rgba(0, 0, 0, 0)',
-                    borderRadius: '8px',
-                  }}
-                >
-                  {/* Supabase */}
-                  <Group align="center" gap="xs">
-                    <ActionIcon variant="filled" size="lg">
-                      <IconBrandSupabase style={{ width: '70%', height: '70%' }} stroke={1.5} />
-                    </ActionIcon>
-                    <Text
-                      style={{
-                        fontSize: '14px',
-                        fontWeight: 600,
-                        color: '#fff',
-                        fontFamily: 'Arial, sans-serif',
-                      }}
-                    >
-                      Supabase
-                    </Text>
-                  </Group>
-
-                  {/* Next JS */}
-                  <Group align="center" gap="xs">
-                    <ActionIcon variant="filled" size="lg">
-                      <IconBrandNextjs style={{ width: '70%', height: '70%' }} stroke={1.5} />
-                    </ActionIcon>
-                    <Text
-                      style={{
-                        fontSize: '14px',
-                        fontWeight: 600,
-                        color: '#fff',
-                        fontFamily: 'Arial, sans-serif',
-                      }}
-                    >
-                      Next JS
-                    </Text>
-                  </Group>
-
-                  {/* Mantine UI */}
-                  <Group align="center" gap="xs">
-                    <ActionIcon variant="filled" size="lg">
-                      <IconBrandMantine style={{ width: '70%', height: '70%' }} stroke={1.5} />
-                    </ActionIcon>
-                    <Text
-                      style={{
-                        fontSize: '14px',
-                        fontWeight: 600,
-                        color: '#fff',
-                        fontFamily: 'Arial, sans-serif',
-                      }}
-                    >
-                      Mantine UI
-                    </Text>
-                  </Group>
-                </Flex>
-
-
-              </Grid.Col>
-              <Grid.Col span={{ base: 12, md: 12, lg: 6 }}>
-                <Text fz="md" fw={600} style={{ marginBottom: 'var(--mantine-spacing-md)' }}>
-                  Code management and assisstant
-                </Text>
-                <Flex
-                  direction={{ base: 'column', sm: 'row' }}
-                  gap={{ base: 'sm', sm: 'lg' }}
-                  justify={{ sm: 'center' }}
-                  p={10}
-                  mih={50}
-                  bg="rgba(0, 0, 0, .3)"
-                  wrap="wrap"
-                  style={{
-                    border: '2px solid rgba(0, 0, 0, 0)',
-                    borderRadius: '8px',
-                  }}
-                >
-                  {/* Supabase */}
-                  <Group align="center" gap="xs">
-                    <ActionIcon variant="filled" size="lg">
-                      <IconBrandGithub style={{ width: '70%', height: '70%' }} stroke={1.5} />
-                    </ActionIcon>
-                    <Text
-                      style={{
-                        fontSize: '14px',
-                        fontWeight: 600,
-                        color: '#fff',
-                        fontFamily: 'Arial, sans-serif',
-                      }}
-                    >
-                      Github
-                    </Text>
-                  </Group>
-
-                  {/* Next JS */}
-                  <Group align="center" gap="xs">
-                    <ActionIcon variant="filled" size="lg">
-                      <IconBrandOpenai style={{ width: '70%', height: '70%' }} stroke={1.5} />
-                    </ActionIcon>
-                    <Text
-                      style={{
-                        fontSize: '14px',
-                        fontWeight: 600,
-                        color: '#fff',
-                        fontFamily: 'Arial, sans-serif',
-                      }}
-                    >
-                      Open AI
-                    </Text>
-                  </Group>
-                  <Group align="center" gap="xs">
-                    <ActionIcon variant="filled" size="lg">
-                      <IconBrandOpenai style={{ width: '70%', height: '70%' }} stroke={1.5} />
-                    </ActionIcon>
-                    <Text
-                      style={{
-                        fontSize: '14px',
-                        fontWeight: 600,
-                        color: '#fff',
-                        fontFamily: 'Arial, sans-serif',
-                      }}
-                    >
-                      Open AI
-                    </Text>
-                  </Group>
-                </Flex>
-              </Grid.Col>
-            </Grid>
+            <HomeSkill />
           </div>
         </div>
       </Paper>

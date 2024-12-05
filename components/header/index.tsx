@@ -88,7 +88,7 @@ export function Header() {
   ));
 
   return (
-    <Container w='lg'>
+    <Container w="lg">
       <header className={classes.header}>
         <Group justify="space-between" h="100%">
           <MantineLogo size={30} />
