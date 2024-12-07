@@ -84,11 +84,11 @@ export function Welcome() {
         <div
           style={{
             display: 'flex',
-            backgroundColor: 'light-dark(var(--mantine-color-white), var(--mantine-color-dark-8))',
+            backgroundColor: 'light-dark(var(--mantine-color-white), var(--mantine-color-dark-5))',
             borderRadius: 'var(--mantine-radius-lg)',
             padding: '8px',
             border:
-              '1px solid light-dark(var(--mantine-color-gray-2), var(--mantine-color-dark-8))',
+              '1px solid light-dark(var(--mantine-color-gray-2), var(--mantine-color-dark-3))',
             flexDirection: 'column',
           }}
         >
@@ -106,7 +106,7 @@ export function Welcome() {
             }}
           >
             <Text
-              fz="xl"
+              fz="lg"
               fw={700}
               style={{
                 color: '#fff',
@@ -117,7 +117,7 @@ export function Welcome() {
               TRANSFORMING IDEAS INTO TOOLS FOR POSITIVE CHANGE
             </Text>
 
-            <Text fz="md" c="#fff" style={{ fontFamily: 'Courier New, monospace' }}>
+            <Text fz="sm" c="#fff" style={{ fontFamily: 'Courier New, monospace' }}>
               Wijaya Portfolio [Version 1.0.0.0]
             </Text>
             <Text mb="xl" fz="md" c="#fff" style={{ fontFamily: 'Courier New, monospace' }}>
@@ -127,6 +127,7 @@ export function Welcome() {
             {/* Render typedText */}
             <div
               style={{
+                fontSize: '14px',
                 color: '#fff',
                 fontFamily: 'Courier New, monospace',
                 whiteSpace: 'pre-wrap',

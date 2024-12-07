@@ -8,7 +8,6 @@ export default function HomePage() {
     <>
       <Header />
       <Welcome />
-      <ShortProject />
       <Footer />
     </>
   );
