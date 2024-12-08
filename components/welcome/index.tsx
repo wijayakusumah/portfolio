@@ -8,7 +8,8 @@ import {
 } from '@tabler/icons-react';
 import { ActionIcon, Container, Flex, Grid, Group, Image, Paper, Text } from '@mantine/core';
 import bg from '../../public/pages/bg.svg';
-import { HomeSkill } from './skil';
+import { HomeSoftSkill } from './softskil';
+import { HomeHardSkill } from './hardskill';
 
 const wait = (ms) => new Promise((resolve) => setTimeout(resolve, ms));
 
@@ -166,7 +167,8 @@ export function Welcome() {
               </span>{' '}
               technologies.
             </Text>
-            <HomeSkill />
+            <HomeSoftSkill />
+            <HomeHardSkill />
           </div>
         </div>
       </Paper>
