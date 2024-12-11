@@ -2,7 +2,9 @@ import { ActionIcon, Grid, Group, Image, SimpleGrid, Text } from '@mantine/core'
 
 const sections = [
   {
-    title: 'Project Management',
+    title: 'Project Management Tools',
+    description: 'I have hands-on experience managing projects, making sure everything runs smoothly from start to finish. I use tools that help keep things organized, track progress, and ensure team collaboration so that we can hit deadlines without a hitch.',
+    color: "",
     items: [
       { src: 'tech/visio-icon.svg', alt: 'MS Visio', label: 'MS Visio', url: 'https://www.microsoft.com/en-us/microsoft-365/visio/flowchart-software' },
       { src: 'tech/jira-icon.svg', alt: 'Atlassian Jira', label: 'Atlassian Jira', url: 'https://www.atlassian.com/software/jira' },
@@ -10,6 +12,8 @@ const sections = [
   },
   {
     title: 'Office 365 Development',
+    description: 'I’m skilled at creating customized solutions within the Office 365 suite to help teams work smarter, automate repetitive tasks, and improve collaboration. It’s all about making everyday work easier and more efficient.',
+    color: "",
     items: [
       { src: 'tech/sharepoint-icon.svg', alt: 'Sharepoint', label: 'Sharepoint', url: 'https://www.microsoft.com/en-us/microsoft-365/sharepoint/collaboration' },
       { src: 'tech/powerautomate-icon.svg', alt: 'Power Automate', label: 'Power Automate', url: 'https://powerautomate.microsoft.com/' },
@@ -21,6 +25,8 @@ const sections = [
   },
   {
     title: 'Software Development Tech',
+    description: 'I’ve built a strong foundation in full-stack development, using modern frameworks and databases to create scalable, user-friendly applications. Whether it’s frontend, backend, or database management, I’ve got the tools to bring ideas to life.',
+    color: "",
     items: [
       { src: 'tech/nodejs-icon.svg', alt: 'Node.js', label: 'Node.js', url: 'https://nodejs.org/' },
       { src: 'tech/expressjs-icon.svg', alt: 'Express.js', label: 'Express.js', url: 'https://expressjs.com/' },
@@ -45,7 +51,9 @@ const sections = [
     ],
   },
   {
-    title: 'Infrastructure',
+    title: 'IT Infrastructure',
+    description: 'I have a solid background in managing IT infrastructure, from setting up servers and networks to troubleshooting hardware and software issues. Keeping systems running smoothly and efficiently is my top priority.',
+    color: "",
     items: [
       { src: 'tech/server-icon.svg', alt: 'Onpremise Windows Server', label: 'Onpremise Windows Server', url: 'https://www.microsoft.com/en-us/windows-server' },
       { src: 'tech/accessdomain-icon.svg', alt: 'Onpremise Access Domain', label: 'Onpremise Access Domain', url: 'https://learn.microsoft.com/en-us/windows-server/identity/ad-ds/active-directory-domain-services' },
@@ -58,6 +66,18 @@ const sections = [
       { src: 'tech/pc-icon.svg', alt: 'PC Troubleshoot', label: 'PC Troubleshoot', url: 'https://support.microsoft.com/en-us' },
     ],
   },
+  {
+    title: 'Engineering Design',
+    description: 'I’m also passionate about engineering design, using advanced CAD and modeling tools to create precise and innovative designs. Whether it’s for 3D models or engineering applications, I focus on quality and creativity.',
+    color: "",
+    items: [
+      { src: 'tech/autocad-icon.svg', alt: 'Autodesk AutoCAD', label: 'Autodesk AutoCAD', url: 'https://www.autodesk.com/products/autocad/overview' },
+      { src: 'tech/fusion-icon.svg', alt: 'Autodesk Fusion 360', label: 'Autodesk Fusion 360', url: 'https://www.autodesk.com/products/fusion-360/overview' },
+      { src: 'tech/solidedge-icon.svg', alt: 'Siemens Solid Edge', label: 'Siemens Solid Edge', url: 'https://www.plm.automation.siemens.com/global/en/products/solid-edge/' },
+      { src: 'tech/maxsurf-icon.svg', alt: 'Bentley Maxsurf', label: 'Bentley Maxsurf', url: 'https://www.bentley.com/software/maxsurf/' },
+      { src: 'tech/arcgis-icon.svg', alt: 'Esri Arcgis', label: 'Esri Arcgis', url: 'https://www.esri.com/en-us/arcgis/products/index' },
+    ],
+  },
 ];
 
 export function HomeHardSkill() {
@@ -65,8 +85,11 @@ export function HomeHardSkill() {
     <Grid>
       {sections.map((section, index) => (
         <Grid.Col key={index} span={12}>
-          <Text fz="md" fw={600} style={{ marginBottom: 'var(--mantine-spacing-md)' }}>
+          <Text fz="md" fw={600} style={{ marginTop: 'var(--mantine-spacing-md)' }}>
             {section.title}
+          </Text>
+          <Text fz="sm" style={{ marginBottom: 'var(--mantine-spacing-md)' }}>
+            {section.description}
           </Text>
           <SimpleGrid
             cols={{ base: 2, lg: 6 }}

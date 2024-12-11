@@ -148,14 +148,19 @@ export function Welcome() {
             <Text fz="md" style={{ marginBottom: 'var(--mantine-spacing-md)' }}>
               Dear All,
             </Text>
-            <Text fz="md" style={{ marginBottom: 'var(--mantine-spacing-xl)' }}>
-              Welcome to my portfolio, where creativity meets innovation. Each project is a
-              testament to my passion for technology and my commitment to building solutions that
-              make a difference. Using the best open-source tools available, I craft experiences
-              that are both scalable and user-friendly.
+            <Text fz="lg" fw="700" style={{ marginBottom: 'var(--mantine-spacing-md)' }}>
+              Welcome to my portfolio,
             </Text>
-            <Text fz="lg" fw={700} style={{ marginBottom: 'var(--mantine-spacing-xl)' }}>
-              This website is built with the power of{' '}
+            <Text fz="md">
+              My passion for technology began at the age of 8 in 2005 and has shaped my career ever since. I specialize in creating efficient systems and automating processes to solve real-world challenges.
+              Each project in this portfolio highlights my hands-on approach and multidisciplinary skills. By leveraging the best tools and technologies, I aim to deliver solutions that are both scalable and user-friendly.
+            </Text>
+            <Text fz="md">
+              Thank you for visiting, and I hope my work inspires new possibilities.
+            </Text>
+
+            <Text fz="lg" fw={700} style={{ marginTop: 'var(--mantine-spacing-xl)' }}>
+              Building a Foundation of {' '}
               <span
                 style={{
                   background: 'linear-gradient(to right, #ff4c4c, #2575fc)', // Red to Blue gradient
@@ -163,9 +168,9 @@ export function Welcome() {
                   color: 'transparent',
                 }}
               >
-                open-source
+                Technical and Personal
               </span>{' '}
-              technologies.
+              Excellence.
             </Text>
             <HomeSoftSkill />
             <HomeHardSkill />
