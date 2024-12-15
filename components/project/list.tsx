@@ -40,7 +40,7 @@ function calculateWorkingDays(startDate: string, endDate: string): number {
 }
 
 export function CardWithStats({ project }: CardWithStatsProps) {
-  const progressValue = project.status === 'Completed' ? 100 : 0; // Set progress to 100% if completed, 0% if not.
+  const progressValue = project.status === 'Completed' ? 100 : 60; // Set progress to 100% if completed, 0% if not.
 
   // Calculate dev time excluding weekends
   const devTime = calculateWorkingDays(project.from, project.to);
@@ -51,14 +51,18 @@ export function CardWithStats({ project }: CardWithStatsProps) {
       padding="lg"
       shadow="sm"
       radius="md"
-      style={{ backgroundColor: 'var(--mantine-color-body)', width: '100%' }}
+      style={{
+        backgroundColor: 'light-dark(var(--mantine-color-white), var(--mantine-color-dark-5))',
+        border: '1px solid light-dark(var(--mantine-color-gray-2), var(--mantine-color-dark-3))',
+        width: '100%',
+      }}
     >
       <Card.Section>
         {/* Display the first image from the gallery as the card cover image */}
         <Image
           src={project.gallery[0]?.url || 'https://via.placeholder.com/300'}
           alt={project.title}
-          height={100}
+          height={180}
         />
       </Card.Section>
 
@@ -84,7 +88,6 @@ export function CardWithStats({ project }: CardWithStatsProps) {
         mt="sm"
         style={{
           borderTop: '1px solid #ddd',
-          borderBottom: '1px solid #ddd',
           paddingBottom: '1rem',
         }}
       >
@@ -99,8 +102,8 @@ export function CardWithStats({ project }: CardWithStatsProps) {
         </Text>
       </Box>
 
-      <Grid>
-        <Grid.Col span={4}>
+      <Grid style={{ marginTop: 'auto', borderTop: '1px solid #ddd' }}>
+        <Grid.Col span={3}>
           <Text mt="sm" c="dimmed" size="xs">
             Status:
           </Text>
@@ -112,15 +115,29 @@ export function CardWithStats({ project }: CardWithStatsProps) {
             </Progress.Section>
           </Progress.Root>
         </Grid.Col>
-        <Grid.Col span={4}>
+        <Grid.Col span={3}>
           <Text mt="sm" c="dimmed" size="xs">
-            Development:
+            Takes:
           </Text>
           <Text size="xs">
             <strong>{devTime} Days</strong>
           </Text>
         </Grid.Col>
-        <Grid.Col span={4}>
+        <Grid.Col span={3}>
+          <Text mt="sm" c="dimmed" size="xs">
+            Achieved:
+          </Text>
+          <Text size="xs">
+            <strong>
+              {new Date(project.to).toLocaleDateString(undefined, {
+                year: 'numeric',
+                month: 'short',
+              })}
+            </strong>
+          </Text>
+        </Grid.Col>
+
+        <Grid.Col span={3}>
           <Text mt="sm" c="dimmed" size="xs">
             Working:
           </Text>

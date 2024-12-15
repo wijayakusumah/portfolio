@@ -1,15 +1,7 @@
 import React, { useEffect, useState } from 'react';
-import {
-  IconBrandGithub,
-  IconBrandMantine,
-  IconBrandNextjs,
-  IconBrandOpenai,
-  IconBrandSupabase,
-} from '@tabler/icons-react';
-import { ActionIcon, Container, Flex, Grid, Group, Image, Paper, Text } from '@mantine/core';
+import { Container, Paper, Text } from '@mantine/core';
 import bg from '../../public/pages/bg.svg';
-import { HomeSoftSkill } from './softskil';
-import { HomeHardSkill } from './hardskill';
+import { AboutMe } from '../about';
 
 const wait = (ms) => new Promise((resolve) => setTimeout(resolve, ms));
 
@@ -145,35 +137,24 @@ export function Welcome() {
               borderLeft: 0,
             }}
           >
-            <Text fz="md" style={{ marginBottom: 'var(--mantine-spacing-md)' }}>
+            <Text fz="sm" style={{ marginBottom: 'var(--mantine-spacing-md)' }}>
               Dear All,
             </Text>
-            <Text fz="lg" fw="700" style={{ marginBottom: 'var(--mantine-spacing-md)' }}>
+            <Text fz="md" fw="700" style={{ marginBottom: 'var(--mantine-spacing-md)' }}>
               Welcome to my portfolio,
             </Text>
-            <Text fz="md">
-              My passion for technology began at the age of 8 in 2005 and has shaped my career ever since. I specialize in creating efficient systems and automating processes to solve real-world challenges.
-              Each project in this portfolio highlights my hands-on approach and multidisciplinary skills. By leveraging the best tools and technologies, I aim to deliver solutions that are both scalable and user-friendly.
+            <Text fz="sm">
+              My passion for technology began at the age of 8 in 2005 and has shaped my career ever
+              since. I specialize in creating efficient systems and automating processes to solve
+              real-world challenges. Each project in this portfolio highlights my hands-on approach
+              and multidisciplinary skills. By leveraging the best tools and technologies, I aim to
+              deliver solutions that are both scalable and user-friendly.
             </Text>
-            <Text fz="md">
+            <Text fz="sm">
               Thank you for visiting, and I hope my work inspires new possibilities.
             </Text>
 
-            <Text fz="lg" fw={700} style={{ marginTop: 'var(--mantine-spacing-xl)' }}>
-              Building a Foundation of {' '}
-              <span
-                style={{
-                  background: 'linear-gradient(to right, #ff4c4c, #2575fc)', // Red to Blue gradient
-                  WebkitBackgroundClip: 'text',
-                  color: 'transparent',
-                }}
-              >
-                Technical and Personal
-              </span>{' '}
-              Excellence.
-            </Text>
-            <HomeSoftSkill />
-            <HomeHardSkill />
+            <AboutMe />
           </div>
         </div>
       </Paper>

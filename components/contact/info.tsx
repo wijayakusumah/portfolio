@@ -19,7 +19,9 @@ function ContactIcon({ icon: Icon, title, description, ...others }: ContactIconP
         <Text size="xs" className={classes.title}>
           {title}
         </Text>
-        <Text className={classes.description}>{description}</Text>
+        <Text size="md" className={classes.description}>
+          {description}
+        </Text>
       </div>
     </div>
   );

@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 import { IconFilter } from '@tabler/icons-react';
-import { Button, Card, Container, Flex, MultiSelect, SimpleGrid } from '@mantine/core';
+import { Button, Card, Container, Flex, MultiSelect, SimpleGrid, Text } from '@mantine/core';
 import { fetchCategory } from '@/supabase/api/category';
 import { fetchCompany } from '@/supabase/api/company';
 import { fetchPosition } from '@/supabase/api/position';
@@ -97,15 +97,17 @@ export function Project() {
     getProjectsAndCompanies();
   }, []);
 
-  const filteredProjects = projects.filter((project) => {
-    const statusMatch = statusFilter.length === 0 || statusFilter.includes(project.status);
-    const typeMatch = typeFilter.length === 0 || typeFilter.includes(project.type);
-    const companyMatch = companyFilter.length === 0 || companyFilter.includes(project.company);
-    const categoryMatch = categoryFilter.length === 0 || categoryFilter.includes(project.category);
-    const positionMatch = positionFilter.length === 0 || positionFilter.includes(project.position);
+  const filteredProjects = projects
+    .filter((project) => {
+      const companyMatch = companyFilter.length === 0 || companyFilter.includes(project.company);
+      const categoryMatch =
+        categoryFilter.length === 0 || categoryFilter.includes(project.category);
+      const positionMatch =
+        positionFilter.length === 0 || positionFilter.includes(project.position);
 
-    return statusMatch && typeMatch && companyMatch && categoryMatch && positionMatch;
-  });
+      return companyMatch && categoryMatch && positionMatch;
+    })
+    .sort((a, b) => new Date(b.to).getTime() - new Date(a.to).getTime());
 
   // Function to clear all filters
   const clearFilters = () => {
@@ -125,11 +127,32 @@ export function Project() {
   }
 
   return (
-    <Container size="lg" mt={100}>
+    <Container size="lg" mt={60}>
+      <Text fz="lg" fw={700}>
+        Showcasing Projects That{' '}
+        <span
+          style={{
+            background: 'linear-gradient(to right, #ff4c4c, #2575fc)', // Red to Blue gradient
+            WebkitBackgroundClip: 'text',
+            color: 'transparent',
+          }}
+        >
+          Deliver Real-World
+        </span>{' '}
+        Impact
+      </Text>
+      <Text fz="sm" style={{ marginBottom: 'var(--mantine-spacing-xl)' }}>
+        A curated collection of projects that showcase my expertise in developing high-impact
+        solutions, transforming business processes, and driving efficiency across various
+        industries.
+      </Text>
       <Card mb="xl" padding="lg" radius="md" withBorder>
+        <Text fz="md" fw={700} ta={'center'} style={{ marginBottom: 'var(--mantine-spacing-sm)' }}>
+          PROJECTS FILTER
+        </Text>
         <SimpleGrid
-          cols={{ base: 1, sm: 2, lg: 3 }}
-          spacing={{ base: 10, sm: 'xl' }}
+          cols={{ base: 1, sm: 2, lg: 4 }}
+          spacing={{ base: 10, sm: 'lg' }}
           verticalSpacing={{ base: 'md', sm: 'sm' }}
         >
           {/* Company Multi-Select Filter */}
@@ -141,32 +164,6 @@ export function Project() {
             data={companies.map((company) => ({
               value: company.title,
               label: company.title,
-            }))}
-            clearable
-          />
-
-          {/* Status Multi-Select Filter */}
-          <MultiSelect
-            label="Status"
-            placeholder="Select Status"
-            value={statusFilter}
-            onChange={setStatusFilter}
-            data={statuses.map((status) => ({
-              value: status.title,
-              label: status.title,
-            }))}
-            clearable
-          />
-
-          {/* Type Multi-Select Filter */}
-          <MultiSelect
-            label="Type"
-            placeholder="Select Type"
-            value={typeFilter}
-            onChange={setTypeFilter}
-            data={types.map((type) => ({
-              value: type.title,
-              label: type.title,
             }))}
             clearable
           />
@@ -212,8 +209,8 @@ export function Project() {
 
       <SimpleGrid
         cols={{ base: 1, sm: 2, lg: 3 }}
-        spacing={{ base: 10, sm: 'xl' }}
-        verticalSpacing={{ base: 'md', sm: 'xl' }}
+        spacing={{ base: 10, sm: 'lg' }}
+        verticalSpacing={{ base: 'md', sm: 'lg' }}
       >
         {filteredProjects.map((project) => (
           <CardWithStats key={project.id} project={project} />

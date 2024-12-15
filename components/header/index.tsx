@@ -96,25 +96,26 @@ export function Header() {
           <MantineLogo size={30} />
 
           <Group h="100%" gap={0} visibleFrom="sm">
-            <a href="/" className={classes.link}>
+            <a href="#home" className={classes.link}>
               Home
             </a>
-            <a href="/projects" className={classes.link}>
+            <a href="#projects" className={classes.link}>
               Projects
             </a>
-            <a href="/contact" className={classes.link}>
+            <a href="#contact" className={classes.link}>
               Contact
             </a>
           </Group>
 
           <Group>
-            <a href='https://github.com/wijayakusumah/portfolio' target="_blank" rel="noopener noreferrer" style={{ textDecoration: 'none' }}>
-              <ActionIcon
-                variant="default"
-                size="lg"
-                aria-label="Github action icon"
-              >
-                <IconBrandGithub stroke='1.5' />
+            <a
+              href="https://github.com/wijayakusumah/portfolio"
+              target="_blank"
+              rel="noopener noreferrer"
+              style={{ textDecoration: 'none' }}
+            >
+              <ActionIcon variant="default" size="lg" aria-label="Github action icon">
+                <IconBrandGithub stroke="1.5" />
               </ActionIcon>
             </a>
             <ColorTheme />
@@ -136,13 +137,13 @@ export function Header() {
         <ScrollArea h="calc(100vh - 80px" mx="-md">
           <Divider my="sm" />
 
-          <a href="/" className={classes.link}>
+          <a href="#home" className={classes.link}>
             Home
           </a>
-          <a href="/projects" className={classes.link}>
+          <a href="#projects" className={classes.link}>
             Projects
           </a>
-          <a href="/contact" className={classes.link}>
+          <a href="#contact" className={classes.link}>
             Contact
           </a>
 
