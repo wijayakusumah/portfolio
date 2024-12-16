@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 import { IconFilter } from '@tabler/icons-react';
-import { Button, Card, Container, Flex, MultiSelect, SimpleGrid, Text } from '@mantine/core';
+import { Button, Card, Container, Flex, Loader, MultiSelect, Paper, SimpleGrid, Text } from '@mantine/core';
 import { fetchCategory } from '@/supabase/api/category';
 import { fetchCompany } from '@/supabase/api/company';
 import { fetchPosition } from '@/supabase/api/position';
@@ -119,15 +119,30 @@ export function Project() {
   };
 
   if (loading) {
-    return <p>Loading...</p>;
+    return <Flex
+    mih={200}
+    justify="center"
+    align="center"
+    direction="row"
+    wrap="wrap"
+  >
+<Loader color="blue" type="bars" />
+</Flex> 
+    
   }
 
   if (projects.length === 0) {
-    return <p>No projects available</p>;
+    return <Flex
+    mih={200}
+    justify="center"
+    align="center"
+    direction="row"
+    wrap="wrap"
+  ><p>No projects available</p></Flex>
   }
 
   return (
-    <Container size="lg" mt={60}>
+    <Container size="lg" mt={80}>
       <Text fz="lg" fw={700}>
         Showcasing Projects That{' '}
         <span

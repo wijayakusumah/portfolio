@@ -19,7 +19,7 @@ function ContactIcon({ icon: Icon, title, description, ...others }: ContactIconP
         <Text size="xs" className={classes.title}>
           {title}
         </Text>
-        <Text size="md" className={classes.description}>
+        <Text size="sm" className={classes.description}>
           {description}
         </Text>
       </div>
@@ -30,8 +30,8 @@ function ContactIcon({ icon: Icon, title, description, ...others }: ContactIconP
 const MOCKDATA = [
   { title: 'Email', description: 'abdulkodirwijayakusumah@gmail.com', icon: IconAt },
   { title: 'Phone', description: '+62 813 1614 9820', icon: IconPhone },
-  { title: 'Address', description: 'Purwakarta, West Java, Indonesia, 41175', icon: IconMapPin },
-  { title: 'Available', description: '07:00 – 20:00', icon: IconSun },
+  { title: 'Address', description: 'Purwakarta, West Java, Indonesia, 41118', icon: IconMapPin },
+  { title: 'Available', description: '07:00 – 20:00 WIB', icon: IconSun },
 ];
 
 export function ContactIconsList() {

@@ -3,7 +3,7 @@ import { Container, Paper, Text } from '@mantine/core';
 import bg from '../../public/pages/bg.svg';
 import { AboutMe } from '../about';
 
-const wait = (ms) => new Promise((resolve) => setTimeout(resolve, ms));
+const wait = (ms: number | undefined) => new Promise((resolve) => setTimeout(resolve, ms));
 
 export function Welcome() {
   const [typedText, setTypedText] = useState('');
@@ -11,19 +11,19 @@ export function Welcome() {
 
   const devTypeText = [
     {
-      command: 'Tell me about your journey?',
+      command: 'Who are you and what’s your journey?',
       response:
-        'I`m Abdul Kodir Wijaya K, a passionate developer from Purwakarta. With over 3 years of experience, I thrive on creating innovative, impactful solutions.',
+        'Hi, I’m Abdul Kodir Wijaya K, from Purwakarta. With over 3 years of experience, I focus on building systems that automate processes and improve efficiency. My goal is to create solutions that make a real impact on businesses.',
     },
     {
       command: 'What kind of projects do you work on?',
       response:
-        'I specialize in building systems that automate and optimize processes, always aiming to improve efficiency and user experience.',
+        'I specialize in automating tasks, optimizing workflows, and integrating systems. I aim to simplify processes, save time, and enhance productivity for businesses.',
     },
     {
       command: 'How can we get in touch?',
       response:
-        'Feel free to connect with me through phone, email, or social media. I’m open to collaborations and exciting opportunities.',
+        'Feel free to reach out! You can contact me by email, phone, or on social media. I’m always open to new opportunities and collaborations.',
     },
   ];
 
@@ -38,7 +38,7 @@ export function Welcome() {
     }
   };
 
-  const typeCommand = async (command) => {
+  const typeCommand = async (command: string | any[]) => {
     setTypedText((prev) => prev + '\n' + `<strong>${commandPrefix}</strong>`);
     await wait(2000);
     for (let i = 0; i < command.length; i++) {
@@ -52,7 +52,7 @@ export function Welcome() {
     await wait(500);
   };
 
-  const typeResponse = async (response) => {
+  const typeResponse = async (response: string | any[]) => {
     for (let i = 0; i < response.length; i++) {
       setTypedText((prev) => prev + response[i]);
       await wait(100);

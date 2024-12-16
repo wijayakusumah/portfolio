@@ -6,7 +6,7 @@ export function SkillList() {
   return (
     <Container
       size="lg"
-      mt={100}
+      mt={80}
       style={{
         display: 'flex',
         justifyContent: 'center',
