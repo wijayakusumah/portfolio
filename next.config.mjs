@@ -10,4 +10,6 @@ export default withBundleAnalyzer({
     ignoreDuringBuilds: true,
   },
   output: 'export',
+  basePath: '/portfolio',
+  assetPrefix: '/portfolio',
 });
