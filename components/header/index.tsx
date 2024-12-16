@@ -43,12 +43,12 @@ export function Header() {
     <Container w="lg">
       <header className={classes.header}>
         <Group justify="space-between" h="100%">
-        <a href="/" style={{ textDecoration: 'none', display: 'flex', alignItems: 'center' }}>
-      <ActionIcon size="lg" style={{ marginRight: 8 }}>
-        <IconBackground />
-      </ActionIcon>
-      <Text fw={700}>WIJAYA K</Text>
-    </a>
+          <a href="/" style={{ textDecoration: 'none', display: 'flex', alignItems: 'center' }}>
+            <ActionIcon size="lg" style={{ marginRight: 8 }}>
+              <IconBackground />
+            </ActionIcon>
+            <Text fw={700}>WIJAYA K</Text>
+          </a>
 
           <Group h="100%" gap={0} visibleFrom="sm">
             <a href="#home" className={classes.link}>

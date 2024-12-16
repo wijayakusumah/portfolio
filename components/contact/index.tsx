@@ -1,11 +1,20 @@
 // ContactInfo.tsx
 import { useState } from 'react';
-import { Button, Container, Group, Paper, SimpleGrid, Text, Textarea, TextInput } from '@mantine/core';
-import { showNotification, notifications } from '@mantine/notifications';
 import { IconCheck, IconX } from '@tabler/icons-react'; // Importing icons
+import {
+  Button,
+  Container,
+  Group,
+  Paper,
+  SimpleGrid,
+  Text,
+  Textarea,
+  TextInput,
+} from '@mantine/core';
+import { notifications, showNotification } from '@mantine/notifications';
+import { postContact } from '@/supabase/api/contact';
 import bg from './bg.svg';
 import { ContactIconsList } from './info';
-import { postContact } from '@/supabase/api/contact';
 import classes from './index.module.css';
 
 export function ContactInfo() {
