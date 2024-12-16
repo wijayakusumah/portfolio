@@ -36,7 +36,7 @@ export function AboutMe() {
       <Grid m={{ base: '0', lg: 40 }} mt={{ base: 40, lg: 40 }} mb={{ base: 40, lg: 40 }}>
         <Grid.Col span={{ base: 12, lg: 5 }}>
           <div>
-            <Group wrap="nowrap">
+            <Group wrap="wrap">
               <Avatar
                 src="https://hhixtgpvsutjqogroeuv.supabase.co/storage/v1/object/public/uploads/photo.jpg"
                 size={94}
