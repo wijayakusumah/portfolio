@@ -14,14 +14,14 @@ export default function App({ Component, pageProps }: AppProps) {
   return (
     <MantineProvider theme={theme}>
       <Head>
-        <title>Wijaya Portfolio</title>
+        <title>A.K Wijaya Kusumah</title>
         <meta
           name="viewport"
           content="minimum-scale=1, initial-scale=1, width=device-width, user-scalable=no"
         />
         <link rel="shortcut icon" href="/favicon.svg" />
         {/* Open Graph Meta Tags */}
-        <meta property="og:title" content="Wijaya Portfolio" />
+        <meta property="og:title" content="A.K Wijaya Kusumah" />
         <meta
           property="og:description"
           content="A professional portfolio website showcasing projects that deliver real-world impact."
@@ -29,11 +29,11 @@ export default function App({ Component, pageProps }: AppProps) {
         <meta property="og:image" content="https://wijaya.vercel.app/oggraph.png" />
         <meta property="og:url" content="https://wijaya.vercel.app" />
         <meta property="og:type" content="website" />
-        <meta property="og:site_name" content="Wijaya Portfolio" />
+        <meta property="og:site_name" content="A.K Wijaya Kusumah" />
 
         {/* Optional: Twitter Card Meta Tags */}
         <meta name="twitter:card" content="summary_large_image" />
-        <meta name="twitter:title" content="Wijaya Portfolio" />
+        <meta name="twitter:title" content="A.K Wijaya Kusumah" />
         <meta
           name="twitter:description"
           content="A professional portfolio website showcasing projects that deliver real-world impact."
