@@ -1,4 +1,3 @@
-// contact.ts
 import { createClient } from '@/supabase/client';
 
 export async function postContact(formData: {
@@ -9,7 +8,6 @@ export async function postContact(formData: {
 }) {
   const supabase = await createClient();
 
-  // Insert data into Supabase 'contact' table
   const { data, error } = await supabase.from('contact').insert([formData]);
 
   if (error) {

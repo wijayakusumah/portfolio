@@ -19,20 +19,18 @@ interface CardWithStatsProps {
   project: Project;
 }
 
-// Function to calculate working days excluding weekends
 function calculateWorkingDays(startDate: string, endDate: string): number {
   const start = new Date(startDate);
   const end = new Date(endDate);
   let totalDays = 0;
 
-  // Loop through each day between the two dates
   while (start <= end) {
     const dayOfWeek = start.getDay();
-    // Only count weekdays (Monday to Friday)
+
     if (dayOfWeek !== 0 && dayOfWeek !== 6) {
       totalDays++;
     }
-    // Move to the next day
+
     start.setDate(start.getDate() + 1);
   }
 
@@ -40,9 +38,8 @@ function calculateWorkingDays(startDate: string, endDate: string): number {
 }
 
 export function CardWithStats({ project }: CardWithStatsProps) {
-  const progressValue = project.status === 'Completed' ? 100 : 60; // Set progress to 100% if completed, 0% if not.
+  const progressValue = project.status === 'Completed' ? 100 : 60;
 
-  // Calculate dev time excluding weekends
   const devTime = calculateWorkingDays(project.from, project.to);
 
   return (

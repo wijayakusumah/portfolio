@@ -1,6 +1,5 @@
-// ContactInfo.tsx
 import { useState } from 'react';
-import { IconCheck, IconX } from '@tabler/icons-react'; // Importing icons
+import { IconCheck, IconX } from '@tabler/icons-react';
 import {
   Button,
   Container,
@@ -27,9 +26,7 @@ export function ContactInfo() {
   const handleSubmit = async (event: React.FormEvent) => {
     event.preventDefault();
 
-    // Validate if all fields are filled
     if (!name || !email || !subject || !message) {
-      // Show an error notification for missing fields
       showNotification({
         title: 'Error!',
         message: 'All fields are required. Please fill in all fields.',
@@ -37,11 +34,10 @@ export function ContactInfo() {
         icon: <IconX style={{ width: 18, height: 18 }} />,
         autoClose: 2000,
       });
-      return; // Prevent form submission
+      return;
     }
 
-    // Show the initial loading notification
-    const id = Math.random().toString(36).substring(7); // Create a unique ID for the notification
+    const id = Math.random().toString(36).substring(7);
     notifications.show({
       id,
       loading: true,
@@ -54,10 +50,9 @@ export function ContactInfo() {
     try {
       setIsLoading(true);
       const formData = { name, email, subject, message };
-      const data = await postContact(formData); // Send data to Supabase
+      const data = await postContact(formData);
       setIsLoading(false);
 
-      // Update notification after message is sent successfully
       notifications.update({
         id,
         color: 'teal',
@@ -65,14 +60,13 @@ export function ContactInfo() {
         message: 'Your message was sent. We will get back to you soon.',
         icon: <IconCheck style={{ width: 18, height: 18 }} />,
         loading: false,
-        autoClose: 5000, // Close after 2 seconds
+        autoClose: 5000,
       });
 
-      console.log('Data submitted:', data); // Optional: log data
+      console.log('Data submitted:', data);
     } catch (error) {
       setIsLoading(false);
 
-      // Update notification if there was an error
       notifications.update({
         id,
         color: 'red',
@@ -80,7 +74,7 @@ export function ContactInfo() {
         message: 'There was an issue sending your message. Please try again.',
         icon: <IconX style={{ width: 18, height: 18 }} />,
         loading: false,
-        autoClose: 5000, // Close after 2 seconds
+        autoClose: 5000,
       });
 
       console.error('Error submitting form:', error);
@@ -93,8 +87,8 @@ export function ContactInfo() {
       mt={80}
       style={{
         display: 'flex',
-        justifyContent: 'center', // Centers horizontally
-        alignItems: 'center', // Centers vertically
+        justifyContent: 'center',
+        alignItems: 'center',
       }}
     >
       <Paper shadow="md" radius="lg" w={'100%'}>

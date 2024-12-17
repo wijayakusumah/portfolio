@@ -15,21 +15,20 @@ export function AboutMe() {
   const downloadResume = async () => {
     const supabase = await createClient();
     const { data, error } = await supabase.storage
-      .from('uploads') // 'avatars' is the bucket name
-      .download('Abdul-Kodir-Wijaya-Kusumah-Resume.pdf'); // Path to the resume
+      .from('uploads')
+      .download('Abdul-Kodir-Wijaya-Kusumah-Resume.pdf');
 
     if (error) {
       console.error('Error downloading file:', error.message);
       return;
     }
 
-    // Create a link to download the file
     const url = window.URL.createObjectURL(data);
     const a = document.createElement('a');
     a.href = url;
-    a.download = 'Abdul-Kodir-Wijaya-Kusumah-Resume.pdf'; // Specify the filename
+    a.download = 'Abdul-Kodir-Wijaya-Kusumah-Resume.pdf';
     a.click();
-    window.URL.revokeObjectURL(url); // Clean up the URL object
+    window.URL.revokeObjectURL(url);
   };
   return (
     <>

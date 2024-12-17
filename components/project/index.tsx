@@ -65,8 +65,8 @@ export function Project() {
   const [companies, setCompanies] = useState<Company[]>([]);
   const [categories, setCategories] = useState<Category[]>([]);
   const [positions, setPositions] = useState<Position[]>([]);
-  const [types, setTypes] = useState<Type[]>([]); // Added state for types
-  const [statuses, setStatuses] = useState<Status[]>([]); // Added state for statuses
+  const [types, setTypes] = useState<Type[]>([]);
+  const [statuses, setStatuses] = useState<Status[]>([]);
   const [loading, setLoading] = useState(true);
   const [statusFilter, setStatusFilter] = useState<string[]>([]);
   const [typeFilter, setTypeFilter] = useState<string[]>([]);
@@ -77,15 +77,12 @@ export function Project() {
   useEffect(() => {
     async function getProjectsAndCompanies() {
       try {
-        // Fetch projects
         const projectData = await fetchProjects();
         setProjects(projectData);
 
-        // Fetch companies
         const companyData = await fetchCompany();
         setCompanies(companyData);
 
-        // Fetch categories, positions, statuses, and types
         const categoryData = await fetchCategory();
         setCategories(categoryData);
 
@@ -119,7 +116,6 @@ export function Project() {
     })
     .sort((a, b) => new Date(b.to).getTime() - new Date(a.to).getTime());
 
-  // Function to clear all filters
   const clearFilters = () => {
     setStatusFilter([]);
     setTypeFilter([]);
@@ -150,7 +146,7 @@ export function Project() {
         Showcasing Projects That{' '}
         <span
           style={{
-            background: 'linear-gradient(to right, #ff4c4c, #2575fc)', // Red to Blue gradient
+            background: 'linear-gradient(to right, #ff4c4c, #2575fc)',
             WebkitBackgroundClip: 'text',
             color: 'transparent',
           }}

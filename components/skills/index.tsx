@@ -30,7 +30,7 @@ export function SkillList() {
           Building a Foundation of{' '}
           <span
             style={{
-              background: 'linear-gradient(to right, #ff4c4c, #2575fc)', // Red to Blue gradient
+              background: 'linear-gradient(to right, #ff4c4c, #2575fc)',
               WebkitBackgroundClip: 'text',
               color: 'transparent',
             }}
