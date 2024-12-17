@@ -31,7 +31,7 @@ A curated list of projects that showcase my skills in **development, IT infrastr
 | **Airin Business Growth**      | Business Development| Sally Maritime Group                  | Automated workflows across key industries |
 | **Post-Fixture System**        | Lead Developer      | Sally Maritime Group                  | Optimized shipping lifecycle management   |
 
-For a complete project list, check out the [Project Section](#projects).
+For a complete project list, check out the [Project Section](https://wijaya.vercel.app/#projects).
 
 ---
 
