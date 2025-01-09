@@ -159,6 +159,32 @@ const sections = [
     ],
   },
   {
+    title: 'ERP System',
+    description:
+      'I have knowledge and experience in implementing ERP systems, from planning to delivery, ensuring project success and alignment with business objectives.',
+    color: '',
+    items: [
+      {
+        src: 'tech/sage-icon.svg',
+        alt: 'Sage 300',
+        label: 'Sage 300',
+        url: 'https://www.sage.com/en-us/products/sage-300',
+      },
+      {
+        src: 'tech/dynamic-icon.svg',
+        alt: 'MS Dynamic 365',
+        label: 'MS Dynamic 365',
+        url: 'https://www.microsoft.com/en-us/dynamics-365',
+      },
+      {
+        src: 'tech/erpnext-icon.svg',
+        alt: 'ERPNext',
+        label: 'ERPNext',
+        url: 'https://erpnext.com',
+      },
+    ],
+  },
+  {
     title: 'IT Infrastructure',
     description:
       'I ensure the IT infrastructure is secure, reliable, and scalable, supporting business operations and growth without interruption.',
