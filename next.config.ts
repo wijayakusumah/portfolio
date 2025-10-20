@@ -1,23 +1,31 @@
 import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
-  /* config options here */
+  // ✅ Disable LightningCSS optimization (fix for Vercel build error)
+  experimental: {
+    optimizeCss: false,
+  },
+
+  // ✅ TypeScript build settings
   typescript: {
     ignoreBuildErrors: true,
   },
-  // 禁用 Next.js 热重载，由 nodemon 处理重编译
+
+  // ✅ Disable React strict mode (you already had this)
   reactStrictMode: false,
+
+  // ✅ Disable webpack file watching (you already had this)
   webpack: (config, { dev }) => {
     if (dev) {
-      // 禁用 webpack 的热模块替换
       config.watchOptions = {
-        ignored: ['**/*'], // 忽略所有文件变化
+        ignored: ['**/*'], // Ignore all file changes
       };
     }
     return config;
   },
+
+  // ✅ Ignore ESLint build errors
   eslint: {
-    // 构建时忽略ESLint错误
     ignoreDuringBuilds: true,
   },
 };
