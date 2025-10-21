@@ -8,7 +8,7 @@ import Link from "next/link"
 
 export default function AboutPage() {
   const skills = [
-    "Next.js", "Node.js", "Express.js", "TypeScript", "Python",
+    "Next.js", "Node.js", "Express.js", "TypeScript", "Python", 
     "SharePoint", "Power Automate", "Power Apps", "Power BI", "MySQL",
     "PostgreSQL", "MS SQL Server", "Docker", "GitHub", "Selenium"
   ]
@@ -80,13 +80,13 @@ export default function AboutPage() {
                 </span>
               </div>
             </div>
-
+            
             <h1 className="text-4xl md:text-5xl font-bold mb-6">
               About <span className="bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent">Abdul Kodir</span>
             </h1>
-
+            
             <p className="text-xl text-muted-foreground leading-relaxed max-w-2xl mx-auto mb-12">
-              Senior System Developer with a rare background combination: Accounting foundation + Engineering degree + IT expertise.
+              Senior System Developer with a rare background combination: Accounting foundation + Engineering degree + IT expertise. 
               I understand real industry problems from multiple angles and adapt successfully to any project.
             </p>
 
@@ -97,14 +97,14 @@ export default function AboutPage() {
                   <p className="text-sm text-muted-foreground">Years Experience</p>
                 </CardContent>
               </Card>
-
+              
               <Card className="text-center p-6">
                 <CardContent className="p-0">
                   <div className="text-3xl font-bold text-purple-600 dark:text-purple-400 mb-2">10+</div>
                   <p className="text-sm text-muted-foreground">Projects Delivered</p>
                 </CardContent>
               </Card>
-
+              
               <Card className="text-center p-6">
                 <CardContent className="p-0">
                   <div className="text-3xl font-bold text-green-600 dark:text-green-400 mb-2">96%</div>
@@ -132,7 +132,7 @@ export default function AboutPage() {
                       What makes me different is my <strong>unique trifecta</strong>: <span className="font-bold text-blue-700 dark:text-blue-300">Accounting foundation</span> + <span className="font-bold text-green-700 dark:text-green-300">Engineering degree</span> + <span className="font-bold text-purple-700 dark:text-purple-300">IT expertise</span>. This rare combination gives me deep understanding of real industry problems that others miss - from financial processes and operational workflows to technical implementation challenges.
                     </p>
                   </div>
-
+                  
                   <div className="bg-gradient-to-r from-green-50 to-emerald-50 dark:from-green-950/20 dark:to-emerald-950/20 p-6 rounded-xl border border-green-200 dark:border-green-800">
                     <h3 className="text-lg font-semibold mb-3 text-green-900 dark:text-green-100">
                       🚀 From Foundation to Senior Leadership
@@ -141,7 +141,7 @@ export default function AboutPage() {
                       My journey started with <strong>Accounting fundamentals in high school</strong>, evolved through an <strong>Engineering degree</strong>, and naturally progressed into <strong>IT systems development</strong>. Today, as <strong>Senior System Developer at Toyota Tsusho</strong>, I leverage this diverse background to bridge gaps between business needs and technical solutions that most developers can't even see.
                     </p>
                   </div>
-
+                  
                   <div className="bg-gradient-to-r from-purple-50 to-pink-50 dark:from-purple-950/20 dark:to-pink-950/20 p-6 rounded-xl border border-purple-200 dark:border-purple-800">
                     <h3 className="text-lg font-semibold mb-3 text-purple-900 dark:text-purple-100">
                       💡 Why I Adapt Successfully to Any Project
@@ -150,7 +150,7 @@ export default function AboutPage() {
                       This diverse background is my <strong>secret weapon</strong> for adapting to various projects successfully. I understand the <span className="font-bold text-purple-700 dark:text-purple-300">"why"</span> behind business processes, not just the <span className="font-bold text-purple-700 dark:text-purple-300">"how"</span> of technical implementation. I speak the language of finance, operations, and technology - making me the perfect bridge between stakeholders and the rare professional who truly understands industry pain points from multiple angles.
                     </p>
                   </div>
-
+                  
                   <div className="bg-gradient-to-r from-orange-50 to-red-50 dark:from-orange-950/20 dark:to-red-950/20 p-6 rounded-xl border border-orange-200 dark:border-orange-800">
                     <h3 className="text-lg font-semibold mb-3 text-orange-900 dark:text-orange-100">
                       🏆 Real-World Impact That Others Can't Deliver
@@ -160,7 +160,7 @@ export default function AboutPage() {
                     </p>
                   </div>
                 </div>
-
+                
                 <div className="flex flex-wrap gap-4">
                   <Button asChild className="gap-2">
                     <Link href="mailto:abdulkodirwijayakusumah@gmail.com">
@@ -176,7 +176,7 @@ export default function AboutPage() {
                   </Button>
                 </div>
               </div>
-
+              
               <div className="space-y-6">
                 <Card>
                   <CardContent className="p-6">
@@ -187,7 +187,7 @@ export default function AboutPage() {
                     <p className="text-muted-foreground">Purwakarta, West Java, Indonesia</p>
                   </CardContent>
                 </Card>
-
+                
                 <Card>
                   <CardContent className="p-6">
                     <h3 className="font-semibold mb-4 flex items-center gap-2">
@@ -197,7 +197,7 @@ export default function AboutPage() {
                     <p className="text-muted-foreground">abdulkodirwijayakusumah@gmail.com</p>
                   </CardContent>
                 </Card>
-
+                
                 <Card>
                   <CardContent className="p-6">
                     <h3 className="font-semibold mb-4">Core Strengths</h3>
@@ -244,9 +244,9 @@ export default function AboutPage() {
             <h2 className="text-3xl font-bold text-center mb-12">Skills & Technologies</h2>
             <div className="flex flex-wrap gap-3 justify-center">
               {skills.map((skill) => (
-                <Badge
-                  key={skill}
-                  variant="outline"
+                <Badge 
+                  key={skill} 
+                  variant="outline" 
                   className="px-4 py-2 text-sm hover:bg-blue-50 dark:hover:bg-blue-950 hover:border-blue-200 dark:hover:border-blue-800 transition-colors"
                 >
                   {skill}

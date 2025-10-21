@@ -1,15 +1,9 @@
-// This is your Prisma schema file,
-// learn more about it in the docs: https://pris.ly/d/prisma-schema
-
-// Looking for ways to speed up your queries, or scale easily with your serverless or edge functions?
-// Try Prisma Accelerate: https://pris.ly/cli/accelerate-init
-
 generator client {
   provider = "prisma-client-js"
 }
 
 datasource db {
-  provider = "sqlite"
+  provider = "postgresql"
   url      = env("DATABASE_URL")
 }
 
@@ -24,24 +18,24 @@ model Company {
 }
 
 model Project {
-  id          Int       @id @default(autoincrement())
+  id          Int      @id @default(autoincrement())
   companyId   Int
-  company     Company   @relation(fields: [companyId], references: [id])
   name        String
-  slug        String    @unique
+  slug        String   @unique
   type        String?
   role        String?
   url         String?
-  visibility  String    @default("public")
+  visibility  String   @default("public")
   status      String?
   summary     String?
   impact      Json?
   modules     Json?
   stack       Json?
   attachments Json?
-  viewCount   Int       @default(0)
-  createdAt   DateTime  @default(now())
-  updatedAt   DateTime  @updatedAt
+  viewCount   Int      @default(0)
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+  company     Company  @relation(fields: [companyId], references: [id])
 }
 
 model Admin {
